@@ -1,18 +1,8 @@
 function sentenceChercher(phrase, motRecherche) {
-    let phrases = phrase.split("."); 
-    let resultats = [];
-
-    phrases.forEach(phrase => {
-        let mots = phrase.split(" "); 
-
-        mots.forEach(mot => {
-            if (mot.toLowerCase() === motRecherche.toLowerCase()) { 
-                resultats.push(phrase.trim() + '.'); 
-            }
-        });
-    });
-
-    return resultats.join(' '); 
+    return phrase.split('.').filter(phrase => {
+        const mots = phrase.split(' ');
+        return mots.some(mot => mot.toLowerCase() === motRecherche.toLowerCase());
+    }).join('. ');
 }
 
 const str = "I have a cat. I have a mat. Things are going swell";
